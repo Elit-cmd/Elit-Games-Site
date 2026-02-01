@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="UTF-8">
+    <title>Elit Games | Anasayfa</title>
+    <link rel="icon" type="image/png" href="../img/logo (2).png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="splash-screen" class="hero">
+        <div class="hero-box">
+            <span class="sub-title">ELİT GAMES PORTAL</span>
+            <h1 class="big-title">ELİT GAMES'E HOŞ GELDİNİZ</h1>
+            <a href="javascript:void(0)" onclick="enterSite()" class="main-btn">ANA SAYFAYA GİT</a>
+        </div>
+    </div>
+
+    <div id="main-site" style="display: none;">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../img/logo (2).png" alt="Logo" class="nav-logo">
+                <span>ELİT GAMES</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Anasayfa</a>
+                <a href="indir.html">İndirmeler</a>
+                <a href="../en-US/index.html" class="lang-btn">EN</a>
+            </div>
+        </nav>
+        <header class="main-header">
+            <div class="header-content">
+                <h2>Oyun Dünyasının Kalbi</h2>
+                <p>En yeni güncellemeler burada.</p>
+            </div>
+        </header>
+    </div>
+
+    <script>
+        function showMainContent() {
+            document.getElementById("splash-screen").style.display = "none";
+            document.getElementById("main-site").style.display = "block";
+        }
+        (function() {
+            if (localStorage.getItem("elitGames_visited_tr") === "true") { showMainContent(); }
+        })();
+        function enterSite() {
+            localStorage.setItem("elitGames_visited_tr", "true");
+            showMainContent();
+        }
+    </script>
+</body>
+</html>

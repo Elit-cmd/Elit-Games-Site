@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="UTF-8">
+    <title>Elit Games | İndirmeler</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../img/logo.png" alt="Logo" class="nav-logo">
+            <span>ELİT GAMES</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Anasayfa</a>
+            <a href="indir.html" class="active">İndirmeler</a>
+            <a href="../en-US/index.html" class="lang-btn">EN</a>
+        </div>
+    </nav>
+
+    <header class="main-header">
+        <div class="header-content">
+            <h2>İndirme Merkezi</h2>
+            <p>Toplam İndirilme: <span id="sayac" style="color: #FFD200;">0</span></p>
+        </div>
+    </header>
+
+    <section class="download-container">
+        <div class="download-card">
+            <div class="card-icon">🚀</div>
+            <h3>Elit Launcher</h3>
+            <p>v1.0.4 Sürümü</p>
+            <a href="https://gitlab.com/Elit-cmd/elit-launcher/-/raw/main/Elit_Launcher.exe" id="indirBtn" class="download-btn">İNDİR</a>
+        </div>
+    </section>
+
+    <script>
+        const firebaseConfig = { databaseURL: "https://elit-launcher-default-rtdb.europe-west1.firebasedatabase.app/" };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database().ref('indirme_sayisi');
+        db.on('value', (snapshot) => {
+            document.getElementById('sayac').innerText = (snapshot.val() || 0).toLocaleString();
+        });
+        document.getElementById('indirBtn').onclick = function() {
+            db.transaction((curr) => { return (curr || 0) + 1; });
+        };
+    </script>
+</body>
+</html>

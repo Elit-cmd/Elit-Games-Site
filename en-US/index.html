@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elit Games | Home</title>
+    <link rel="icon" type="image/png" href="../img/logo (2).png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div id="splash-screen" class="hero">
+        <div class="hero-box">
+            <span class="sub-title">ELIT GAMES PORTAL</span>
+            <h1 class="big-title">WELCOME TO ELIT GAMES</h1>
+            <p>Ready for the adventure? Join the most elite community.</p>
+            <a href="javascript:void(0)" onclick="enterSite()" class="main-btn">GO TO HOME</a>
+        </div>
+    </div>
+
+    <div id="main-site" style="display: none;">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../img/logo (2).png" alt="Logo" class="nav-logo">
+                <span>ELIT GAMES</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="download.html">Downloads</a>
+                <a href="../tr-TR/index.html" class="lang-btn">TR</a>
+            </div>
+        </nav>
+        
+        <header class="main-header">
+            <div class="header-content">
+                <h2>The Heart of Gaming</h2>
+                <p>Find the latest updates and news here.</p>
+            </div>
+        </header>
+    </div>
+
+    <script>
+        function showMainContent() {
+            document.getElementById("splash-screen").style.display = "none";
+            document.getElementById("main-site").style.display = "block";
+        }
+        (function() {
+            if (localStorage.getItem("elitGames_visited_en") === "true") { showMainContent(); }
+        })();
+        function enterSite() {
+            localStorage.setItem("elitGames_visited_en", "true");
+            showMainContent();
+        }
+    </script>
+</body>
+</html>
